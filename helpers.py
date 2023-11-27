@@ -26,4 +26,4 @@ def generate_summary(text: str):
             {"role": "user", "content": f"Generate a short one-paragraph summary of the following text: '{text}'."}
         ]
     )
-    return response['choices'][0]['message']['content']
+    return response.choices[0].message.content
