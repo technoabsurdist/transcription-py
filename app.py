@@ -27,9 +27,6 @@ def handle_submit():
         text=text,
         summary=summary
     )
-    response.headers['Access-Control-Allow-Origin'] = 'https://transcript-fe.vercel.app'
-    response.headers['Access-Control-Allow-Methods'] = 'POST'
-    response.headers['Access-Control-Allow-Headers'] = 'Content-Type, Authorization'
     return jsonify(response.model_dump())
 
 if __name__ == '__main__':
