@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 from models import SubmitRequest, SubmitResponse
-from transcripter import transcription 
+from helpers import transcription, generate_summary
 from flask_cors import CORS
 
 app = Flask(__name__)
@@ -18,11 +18,13 @@ def handle_submit():
         return str(e), 400
 
     text, metadata = transcription(data.url)
+    summary = generate_summary(text)
     response = SubmitResponse(
         title=metadata['title'],
         thumbnail_url=metadata['thumbnail_url'],
         author=metadata['author'],
-        text=text
+        text=text,
+        summary=summary
     )
     return jsonify(response.model_dump())
 

@@ -8,4 +8,5 @@ class SubmitResponse(BaseModel):
     thumbnail_url: str
     author: str
     text: str
+    summary: str
 
